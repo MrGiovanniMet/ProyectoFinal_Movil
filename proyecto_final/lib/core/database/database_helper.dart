@@ -17,6 +17,21 @@ class DatabaseHelper {
         password TEXT NOT NULL
       )
     ''');
+
+    await db.execute('''
+      CREATE TABLE books(
+        localId INTEGER PRIMARY KEY AUTOINCREMENT,
+        userId INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        author TEXT NOT NULL,
+        status TEXT NOT NULL,
+        imagePath TEXT,
+        genre TEXT,
+        pages INTEGER,
+        year INTEGER,
+        synopsis TEXT
+      )
+    ''');
   }
 
   Future<Database> _initDB(String filePath) async {
